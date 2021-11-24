@@ -15,7 +15,7 @@ public class YahooFlow extends BasePage {
     private static final String YAHOO_URL = "https://mail.yahoo.com/";
     private final By buttonAccount = By.xpath("//input[contains(@id, 'login-signin')]");
     private final By buttonPassword = By.xpath("//button[@type='submit']");
-
+    private final By hideButton = By.xpath("//button[contains(@class, 'show')]");
 
     public void navigateTo() {
         webDriver.navigate().to(YAHOO_URL);
@@ -31,11 +31,11 @@ public class YahooFlow extends BasePage {
 
     public void sendPassword() {
         String password = "Robyyy2001";
-        WebElement findPassword = webDriver.findElement(By.xpath("//input[contains(@type, 'password')]"));
+        clickWhenReady(webDriver, hideButton);
+        WebElement findPassword = webDriver.findElement(By.xpath("//input[contains(@class, 'password')]"));
         findPassword.click();
         findPassword.sendKeys(password);
         webDriver.findElement(buttonPassword).click();
     }
-
 
 }

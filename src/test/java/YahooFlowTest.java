@@ -24,4 +24,5 @@ public class YahooFlowTest extends BaseTest {
         yahooFlow.sendPassword();
         Assert.assertTrue(getWebDriver().getTitle().contains(pageTitle));
     }
+
 }
